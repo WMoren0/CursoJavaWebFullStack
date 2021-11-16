@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Spring Boot</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+    </head>
+    <body>
+        <div class="navbar-fixed">
+            <nav style="background-color: #0D47A1">
+                <div class="nav-wrapper">
+                    <ul class="left hide-on-med-and-down">
+                        <a href="/cadastropessoa" class="waves-ripple btn">
+                            Cadastro
+                        </a>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="column" style="margin: 2%">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content gray-text">
+                        <form action="/" method="post" class="col s6">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <label for="pesquisar">Pesquisar nome</label>
+                                    <input id="pesquisar" type="text" name="pesquisarnome" class="validate"/>
+                                    <button type="submit" value="Pesquisar" class="waves-ripple btn">
+                                        Pesquisar<i class="material-icons right">search</i>
+                                    </button>
+                                    <a href="/" class="waves-ripple btn">Lista Completa</a>
+                                </div>
+                            </div>
+                        </form>
+                        <h5>Lista de usuários</h5>
+                        <br>
+                        <table class="striped"> 
+                            <!-- 
+                            th é um parametro de valor "http://www.thymeleaf.org
+                            O each funciona como um for, e é atribuido a ele
+                            um parametro/objeto (pessoa), e como é um JSP usamos o $ e dentro
+                            das chaves {} é colocado um nome referenciando a entidade
+                            -->
+                            <th style="font-weight: 600">ID</th>
+                            <th style="font-weight: 600">Nome</th>
+                            <th style="font-weight: 600">Sobrenome</th>
+                            <th style="font-weight: 600">Email</th>
+                            <tr th:each = "pessoa : ${pessoas}"> <!-- tr = linha -->
+                                <td th:text = "${pessoa.id}"></td> <!-- td = célula -->
+                                <td th:text = "${pessoa.nome}"></td>
+                                <td th:text = "${pessoa.sobrenome}"></td>
+                                <td th:text = "${pessoa.email}"></td>
+                                <td style="width:1%">
+                                    <a th:href="@{/editarpessoa/{idpessoa}(idpessoa=${pessoa.id})}"
+                                       class="waves-effect waves-ripple btn-small">
+                                        Editar
+                                    </a>
+                                </td>
+                                <td style="width:1%">
+                                    <a th:href="@{/removerpessoa/{idpessoa}(idpessoa=${pessoa.id})}"
+                                       class="waves-effect waves-ripple btn-small">
+                                        Excluir
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="/materialize/js/materialize.js"></script>
+        <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Spring Boot</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <!--Import materialize.css-->
+            <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+            <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+
+            <style>
+
+                @media(min-width:601px){
+                    body{
+                        margin: 2% 15% 0% 15%;
+                    }
+                }
+
+                @media(max-width:600px){
+                    body {
+                        margin: 0% 0% 0% 0%;
+                    }
+                }
+
+
+            </style>
+
+    </head>
+    <body style="background-color: whitesmoke">
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card z-depth-2">
+                    <div class="card-content">
+                        <div class="row">
+                            <form class="col s12" action="/salvarpessoa" method="post" th:object="${pessoaobj}"> <!-- url do value do método salvar-->
+                                <h2>Cadastro</h2>
+
+                                <div class="row">
+                                    <div class="input-field col s2">
+                                        <label for="id">ID</label>
+                                        <input type="text" name="id" class="validate" readonly="readonly" th:field="*{id}"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <label for="name">Nome</label>
+                                        <input id="first_name" type="text" name="nome" class="validate" th:field="*{nome}" required/>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <label for="Sobrenome">Sobrenome</label>
+                                        <input id="sobrenome" type="text" name="sobrenome" class="validate" th:field="*{sobrenome}" required/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <label for="email">Email</label>
+                                        <input id="email" type="email" name="email" class="validate" th:field="*{email}" required/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <input type="submit" value="Salvar" class="waves-ripple btn-small"/>
+                                <a href="/" class="waves-ripple btn-small">
+                                    Voltar
+                                </a>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="/materialize/js/materialize.js"></script>
+        <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+    </body>
+</html>
