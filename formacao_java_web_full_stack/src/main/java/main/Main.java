@@ -1,8 +1,10 @@
 package main;
 
-import cursoJava.herancaPolimorfismoInterface.aluno.MatriculaAluno;
 import java.util.TimeZone;
+
 import javax.swing.JOptionPane;
+
+import cursoJava.herancaPolimorfismoInterface.aluno.MatriculaAluno;
 
 /**
  *
@@ -18,7 +20,7 @@ public class Main {
             ex.printStackTrace();
         } finally {
             /*
-                Esse método sempre é executado indepedendo de erros
+             * Esse método sempre é executado indepedendo de erros
              */
             JOptionPane.showMessageDialog(null, "Programa Finalizado!");
         }
